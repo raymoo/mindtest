@@ -103,7 +103,6 @@ function mindtest.energy.sever_links(pos)
 
       local upstreams
       local upMeta
-      local upDownstreamString
       local upDownstreams
 
       upstreams = get_meta_table(meta, "upstreams") or {}
@@ -127,7 +126,6 @@ function mindtest.energy.sever_links(pos)
    if is_sender(pos) then
       local downstreams
       local downMeta
-      local downUpstreamString
       local downUpstreams
 
       downstreams = get_meta_table(meta, "downstreams") or {}
