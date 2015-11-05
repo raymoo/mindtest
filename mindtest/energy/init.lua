@@ -12,7 +12,8 @@ local receiverGroup = "mindtest:receiver"
 
 
 -- Registers a node as an energy-carrying node of some type. The pullCB should be
--- a function pullCB(from, to, amountRequested).
+-- a function pullCB(from, to, amountRequested) that returns the amount of energy
+-- successfully extracted.
 --
 -- "from" is the position of the node that requested the energy.
 --
