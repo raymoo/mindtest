@@ -95,7 +95,7 @@ local set_meta_table = mindtest.set_meta_table
 -- Handles the remove of a node from the network
 function mindtest.energy.sever_links(pos)
 
-   posString = minetest.pos_to_string(pos)
+   local posHash = minetest.hash_node_position(pos)
 
    local meta = minetest.get_meta(pos)
    
@@ -116,7 +116,7 @@ function mindtest.energy.sever_links(pos)
 	 -- Remove the node we're severing from the upstream node's
 	 -- downstream list
 	 if upDownstreams then
-	    upDownstreams[posString] = nil
+	    upDownstreams[posHash] = nil
 	    set_meta_table(upMeta, "downstreams", upDownstreams)
 	 end
       end
@@ -140,7 +140,7 @@ function mindtest.energy.sever_links(pos)
 	 -- Remove the node we're severing from the downstream node's
 	 -- upstream list
 	 if downUpstreams then
-	    downUpstreams[posString] = nil
+	    downUpstreams[posHash] = nil
 	    set_meta_table(downMeta, "upstreams", downUpstreams)
 	 end
       end
@@ -176,11 +176,11 @@ function mindtest.energy.link_nodes(from, to)
    local fromDownstreams = get_meta_table(fromMeta, "downstreams") or {}
    local toUpstreams = get_meta_table(toMeta, "upstreams") or {}
 
-   local toPosString = minetest.pos_to_string(to)
-   local fromPosString = minetest.pos_to_string(from)
+   local toPosHash = minetest.hash_node_position(to)
+   local fromPosHash = minetest.hash_node_position(from)
 
-   fromDownstreams[toPosString] = true
-   toUpstreams[fromPosString] = true
+   fromDownstreams[toPosHash] = true
+   toUpstreams[fromPosHash] = true
 
    set_meta_table(fromMeta, "downstreams", fromDownstreams)
    set_meta_table(toMeta, "upstreams", toUpstreams)
