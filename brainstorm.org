@@ -20,8 +20,10 @@
 **** Transmission
      Intermediate nodes of some kind
      Link nodes together (collectors > transmitters > effectors) wirelessly (range limit?)
-     Source can be any collector/transmitter.
-     Target can be any effector or a transmitter with no existing outgoing connections
+     Source and target can be anything that conducts energy (though a collector may not necessarily
+     pass on upstream energy)
+     Either the source must have no existing incoming connections, or the target must not have
+     outgoing connections
      This forces a DAG structure
 **** Implementation
      Collectors, Effectors, Transmission nodes, etc. are all one kind of thing (call them shuttlers)
